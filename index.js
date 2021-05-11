@@ -1,7 +1,7 @@
 var fs = require('fs');
 var util = require('util');
 
-var file = 'zombie_territories.xml'; //file to remove
+var file = 'zombie_territories.xml'; //file to check
 var newfile = 'new_zombie_territories.xml'; //new file with matches removed
 
 fs.unlink(newfile, (err) => {
@@ -10,11 +10,9 @@ fs.unlink(newfile, (err) => {
 });
 
 var log_file = fs.createWriteStream(__dirname + '/' + newfile, {flags : 'w'});
-// var log_stdout = process.stdout;
 
 printLine = function(d) { //
     log_file.write(util.format(d) + '\n');
-    // log_stdout.write(util.format(d) + '\n');
 };
 
 var lineReader = require('readline').createInterface({
